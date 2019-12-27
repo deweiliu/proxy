@@ -1,0 +1,51 @@
+services:
+  - operation: add
+    operator: "+"
+    URLs:
+      - http://add-one.40216004.qpc.hal.davecutting.uk/
+      - http://add-two.40216004.qpc.hal.davecutting.uk/
+      - http://add-three.40216004.qpc.hal.davecutting.uk/
+      - http://add-four.40216004.qpc.hal.davecutting.uk/
+      - http://add-five.40216004.qpc.hal.davecutting.uk/
+      - http://add-six.40216004.qpc.hal.davecutting.uk/
+  - operation: subtract
+    operator: "-"
+    URLs:
+      - http://subtract-one.40216004.qpc.hal.davecutting.uk/
+      - http://subtract-two.40216004.qpc.hal.davecutting.uk/
+      - http://subtract-three.40216004.qpc.hal.davecutting.uk/
+  - operation: multiply
+    operator: "*"
+    URLs:
+      - http://multiply-one.40216004.qpc.hal.davecutting.uk/
+      - http://multiply-two.40216004.qpc.hal.davecutting.uk/
+      - http://multiply-three.40216004.qpc.hal.davecutting.uk/
+  - operation: division
+    operator: "/"
+    URLs:
+      - http://division-one.40216004.qpc.hal.davecutting.uk/
+      - http://division-two.40216004.qpc.hal.davecutting.uk/
+      - http://division-three.40216004.qpc.hal.davecutting.uk/
+  - operation: power
+    operator: "^"
+    URLs:
+      - http://power-one.40216004.qpc.hal.davecutting.uk/
+      - http://power-two.40216004.qpc.hal.davecutting.uk/
+      - http://power-three.40216004.qpc.hal.davecutting.uk/
+  - operation: modulo
+    operator: "%"
+    URLs:
+      - http://modulo-one.40216004.qpc.hal.davecutting.uk/
+      - http://modulo-two.40216004.qpc.hal.davecutting.uk/
+      - http://modulo-three.40216004.qpc.hal.davecutting.uk/
+     
+  - operation: NotExistingService-one
+    operator: "?"
+    URLs:
+      - http://NotExistingDomain-abcdefghija.40216004.qpc.hal.davecutting.uk/
+      - http://NotExistingDomain-xyzabvnbao.40216004.qpc.hal.davecutting.uk/
+  - operation: NotExistingService-two
+    operator: "??"
+    URLs:
+      - http://NotExistingDomain-eatneanea.40216004.qpc.hal.davecutting.uk/
+      - http://NotExistingDomain-trhraadgbv.40216004.qpc.hal.davecutting.uk/

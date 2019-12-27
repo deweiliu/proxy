@@ -1,0 +1,139 @@
+swagger: "2.0"
+info:
+  description: Welcome to the backend of the calculator. In this page, you can test the backend services by sending requests!
+  version: "1.0.0"
+  title: Casidave Calcutron Backend
+consumes:
+  - application/json
+produces:
+  - application/json
+
+paths:
+  /calculate:
+    get:
+      operationId: src.calculate.calculate.calculate
+      tags:
+        - Calculation
+      summary: Receive parameters and calculate the result
+      description: Interpret the request and forward it to corresponding service to get the result
+      parameters:
+        - name: operation
+          in: query
+          type: string
+          description: The operation name (e.g. add, subtract, etc.)
+          required: true
+        - name: x
+          in: query
+          type: string
+          description: The number follwed by the operator
+          required: true
+        - name: y
+          in: query
+          type: string
+          description: The number following the operator
+          required: true
+        - name: proxy_error
+          in: query
+          type: boolean
+          default: false
+          required: false
+          description: This parameter can be used to trigger an error in the proxy server
+        - name: service_error
+          in: query
+          type: boolean
+          default: false
+          required: false
+          description: This parameter can be used to trigger an error in the corresponding service's error (e.g. add, subtract service)
+        - name: delay
+          in: query
+          type: boolean
+          default: false
+          required: false
+          description: This parameter can be used to delay the response for 3 seconds. It can be used for testing asynchronous issues
+
+      responses:
+        200:
+          description: Successfully calculated the answer
+          schema:
+            type: object
+            properties:
+              expression:
+                type: string
+                description: The original expression to be calculated
+              answer:
+                type: integer
+                description: The answer of the expression
+
+  /services:
+    get:
+      operationId: src.services.services.services
+      tags:
+        - Services
+      summary: Return all available services
+      description: Read the configuration file and check the services
+      responses:
+        200:
+          description: Returning services
+          schema:
+            type: object
+            properties:
+              services:
+                type: array
+                description: An array of available services
+                items:
+                  type: object
+              unavailable_services:
+                type: array
+                description: An array of unavailable services
+                items:
+                  type: object
+
+  /checkService:
+    post:
+      operationId: src.check_service.check_service.check_service
+      tags:
+        - Check Service
+      summary: Check a service is available
+      description: Send request to a specific service, check it is working properly
+      parameters:
+        - name: service
+          in: body
+          description: Service details
+          required: True
+          schema:
+            type: object
+            properties:
+              operation:
+                type: string
+                description: The name of the service
+              operator:
+                type: string
+                description: The operator symbol
+              URLs:
+                type: array
+                description: A list of enpoint URLs to be tested
+                items:
+                  type: string
+      responses:
+        200:
+          description: The result of the testing
+          schema:
+            type: object
+            properties:
+              available:
+                description: If at least one URL works, this variable is True
+                type: boolean
+              service:
+                type: object
+                properties:
+                  operation:
+                    type: string
+                    description: The name of the service
+                  operator:
+                    type: string
+                    description: The operator symbol
+                  URLs:
+                    type: array
+                    description: A list of available URLs
+                    items:
+                      type: string
