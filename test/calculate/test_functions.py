@@ -39,7 +39,7 @@ def test_build_response_body():
     # read configuration file
     config = setup_configuration()
     answer = 10
-    service_response = {'answer': answer, 'error': False}
+    service_response = {'answer': answer, 'error': True}# break the test
 
     for service in config['services']:
         result = functions.build_response_body(service, 0, 0, service_response)
